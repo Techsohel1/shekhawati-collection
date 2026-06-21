@@ -42,9 +42,13 @@ app.get('/', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`===================================================`);
-  console.log(`Server is running in development mode on port ${PORT}`);
-  console.log(`API Local Address: http://localhost:${PORT}`);
-  console.log(`===================================================`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`===================================================`);
+    console.log(`Server is running in development mode on port ${PORT}`);
+    console.log(`API Local Address: http://localhost:${PORT}`);
+    console.log(`===================================================`);
+  });
+}
+
+export default app;
