@@ -207,6 +207,10 @@ button, input, select, textarea {
   color: var(--color-bg-cream);
 }
 
+.mobile-menu-btn {
+  display: none;
+}
+
 .header-main {
   background-color: rgba(252, 251, 247, 0.85);
   backdrop-filter: blur(15px);
@@ -1627,15 +1631,24 @@ footer {
   .top-bar-right {
     justify-content: center;
   }
+  
+  /* Two-row mobile header adjustments */
   .header-inner {
     padding: 10px 0;
     position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px;
   }
   .logo {
     font-size: 20px;
+    order: 1;
   }
   .logo img {
     height: 38px !important;
+  }
+  .logo span {
+    display: none; /* Hide brand text on mobile so it doesn't overflow */
   }
   
   /* Mobile Navigation Hamburger Menu */
@@ -1645,6 +1658,8 @@ footer {
     border: none;
     cursor: pointer;
     color: var(--color-text-charcoal);
+    order: 0;
+    padding: 5px;
   }
   
   header nav {
@@ -1657,10 +1672,11 @@ footer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
+    z-index: 1000;
   }
   
   header nav.open {
-    max-height: 300px;
+    max-height: 350px;
   }
   
   .nav-links {
@@ -1670,14 +1686,17 @@ footer {
   }
   
   .header-actions {
-    gap: 10px;
+    order: 2;
+    gap: 12px;
   }
   
   .search-container {
-    width: 140px;
+    order: 3;
+    width: 100% !important;
+    margin-top: 10px;
   }
   .search-container:focus-within {
-    width: 180px;
+    width: 100% !important;
   }
   
   .slide-title {
@@ -1795,14 +1814,5 @@ footer {
   }
   .section-header h2 {
     font-size: 28px;
-  }
-  .logo span {
-    display: none; /* Hide long logo text on very small screen */
-  }
-  .search-container {
-    width: 100px;
-  }
-  .search-container:focus-within {
-    width: 130px;
   }
 }
