@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppState';
 import { useCurrency } from '../context/CurrencyContext';
-import { Search, ShoppingBag, Heart, User, X, Plus, Minus, Globe, LogOut, GitCompare, LayoutDashboard } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, X, Plus, Minus, Globe, LogOut, GitCompare, LayoutDashboard, Menu } from 'lucide-react';
 import { API_URL } from '../config';
 
 const Navbar = () => {
@@ -12,6 +12,7 @@ const Navbar = () => {
   const location = useLocation();
   
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
@@ -121,8 +122,17 @@ const Navbar = () => {
       {/* Main Luxury Header */}
       <header className="header-main">
         <div className="container header-inner">
+          {/* Mobile Menu Button */}
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
           {/* Brand Logo & Label */}
-          <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }} onClick={() => setIsMenuOpen(false)}>
             <img 
               src="/logo.jpg" 
               alt="Shekhawati Collection Logo" 
@@ -132,25 +142,25 @@ const Navbar = () => {
           </Link>
 
           {/* Navigation Links */}
-          <nav>
+          <nav className={isMenuOpen ? 'open' : ''}>
             <ul className="nav-links">
               <li>
-                <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+                <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Home</Link>
               </li>
               <li>
-                <Link to="/shop" className={location.pathname === '/shop' ? 'active' : ''}>Shop</Link>
+                <Link to="/shop" className={location.pathname === '/shop' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Shop</Link>
               </li>
               <li>
-                <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>Blog</Link>
+                <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Blog</Link>
               </li>
               <li>
-                <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About Us</Link>
+                <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>About Us</Link>
               </li>
               <li>
-                <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact Us</Link>
+                <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
               </li>
               <li>
-                <Link to="/track-order" className={location.pathname === '/track-order' ? 'active' : ''}>Track Order</Link>
+                <Link to="/track-order" className={location.pathname === '/track-order' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Track Order</Link>
               </li>
             </ul>
           </nav>

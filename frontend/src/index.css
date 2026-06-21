@@ -1598,28 +1598,211 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* Add responsive mobile nav toggle logic later */
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .slide-title {
-    font-size: 38px;
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
-  .slide-content {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .trust-grid {
+  .shop-layout {
     grid-template-columns: 1fr;
   }
+  .shop-sidebar {
+    margin-bottom: 30px;
+  }
+  .details-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar-inner {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  .top-bar-right {
+    justify-content: center;
+  }
+  .header-inner {
+    padding: 10px 0;
+    position: relative;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .logo img {
+    height: 38px !important;
+  }
+  
+  /* Mobile Navigation Hamburger Menu */
+  .mobile-menu-btn {
+    display: block !important;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-charcoal);
+  }
+  
+  header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border-gold);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  header nav.open {
+    max-height: 300px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .header-actions {
+    gap: 10px;
+  }
+  
+  .search-container {
+    width: 140px;
+  }
+  .search-container:focus-within {
+    width: 180px;
+  }
+  
+  .slide-title {
+    font-size: 36px;
+  }
+  .slide-content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .slide-desc {
+    font-size: 14px;
+  }
+  
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-card {
+    height: 250px;
+  }
+  
+  .details-layout {
+    grid-template-columns: 1fr;
+  }
+  .details-gallery {
+    margin-right: 0;
+  }
+  .details-main-img-container {
+    height: 350px;
+  }
+  
+  .cart-layout, .checkout-layout, .details-tabs, .tabs-headers {
+    flex-direction: column;
+  }
+  
+  .checkout-layout, .shop-layout, div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Cart and checkout tables */
+  div[style*="gridTemplateColumns: 3fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    text-align: left !important;
+    gap: 10px;
+    border-bottom: 1px solid var(--color-border-light);
+    padding: 20px 0;
+  }
+  
+  div[style*="gridTemplateColumns: 3fr 1fr 1fr 1fr"] span,
+  div[style*="gridTemplateColumns: 3fr 1fr 1fr 1fr"] div {
+    text-align: left !important;
+  }
+  
+  /* Hide the cart headers on mobile */
+  div[style*="paddingBottom: 15px; borderBottom: 1px solid #E5D5B3; fontSize: 12px;"] {
+    display: none !important;
+  }
+  
+  /* Footer responsive */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  /* Newsletter popup */
   .newsletter-modal {
     flex-direction: column;
-    max-width: 400px;
+    max-width: 90% !important;
   }
   .newsletter-modal-left {
     display: none;
   }
   .newsletter-modal-right {
-    width: 100%;
+    width: 100% !important;
+    padding: 30px !important;
+  }
+  
+  /* Admin sidebar on mobile */
+  div[style*="width: 280px; backgroundColor: #4A101D"] {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    border-right: none !important;
+    border-bottom: 1.5px solid #D4AF37 !important;
+    padding: 15px !important;
+  }
+  div[style*="display: flex; height: 100vh; width: 100vw; overflow: hidden"] {
+    flex-direction: column !important;
+    position: relative !important;
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+  div[style*="flexGrow: 1; display: flex; flexDirection: column; height: 100vh; overflow: hidden"] {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 28px;
+  }
+  .slide-desc {
+    font-size: 13px;
+  }
+  .section-header h2 {
+    font-size: 28px;
+  }
+  .logo span {
+    display: none; /* Hide long logo text on very small screen */
+  }
+  .search-container {
+    width: 100px;
+  }
+  .search-container:focus-within {
+    width: 130px;
   }
 }
